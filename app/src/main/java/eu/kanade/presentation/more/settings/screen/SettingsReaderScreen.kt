@@ -295,6 +295,11 @@ object SettingsReaderScreen : SearchableSettings {
         val rotateToFit by rotateToFitPref.collectAsState()
         val webtoonSidePadding by webtoonSidePaddingPref.collectAsState()
 
+        val autoScrollPref = readerPreferences.webtoonAutoScroll
+        val autoScroll by autoScrollPref.collectAsState()
+        val autoScrollSpeedPref = readerPreferences.webtoonAutoScrollSpeed
+        val autoScrollSpeed by autoScrollSpeedPref.collectAsState()
+
         return Preference.PreferenceGroup(
             title = stringResource(MR.strings.webtoon_viewer),
             preferenceItems = listOf(
@@ -325,6 +330,20 @@ object SettingsReaderScreen : SearchableSettings {
                     title = stringResource(MR.strings.pref_webtoon_side_padding),
                     valueString = numberFormat.format(webtoonSidePadding / 100f),
                     onValueChanged = { webtoonSidePaddingPref.set(it) },
+                ),
+                Preference.PreferenceItem.SwitchPreference(
+                    preference = autoScrollPref,
+                    title = stringResource(MR.strings.pref_webtoon_auto_scroll),
+                ),
+                Preference.PreferenceItem.SliderPreference(
+                    value = autoScrollSpeed,
+                    valueRange = ReaderPreferences.let {
+                        it.WEBTOON_AUTO_SCROLL_SPEED_MIN..it.WEBTOON_AUTO_SCROLL_SPEED_MAX
+                    },
+                    title = stringResource(MR.strings.pref_webtoon_auto_scroll_speed),
+                    valueString = "$autoScrollSpeed",
+                    onValueChanged = { autoScrollSpeedPref.set(it) },
+                    enabled = autoScroll,
                 ),
                 Preference.PreferenceItem.ListPreference(
                     preference = readerPreferences.readerHideThreshold,
