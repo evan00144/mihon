@@ -51,6 +51,12 @@ class WebtoonRecyclerView @JvmOverloads constructor(
 
     var tapListener: ((MotionEvent) -> Unit)? = null
     var longTapListener: ((MotionEvent) -> Boolean)? = null
+    var onUserTouchListener: ((MotionEvent) -> Unit)? = null
+
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        onUserTouchListener?.invoke(ev)
+        return super.dispatchTouchEvent(ev)
+    }
 
     private var isManuallyScrolling = false
     private var tapDuringManualScroll = false

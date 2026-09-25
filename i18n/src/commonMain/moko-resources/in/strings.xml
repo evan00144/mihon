@@ -335,6 +335,8 @@
     <string name="restoring_backup_error">Gagal memulihkan data dari cadangan</string>
     <string name="creating_backup_error">Pencadangan data gagal</string>
     <string name="pref_webtoon_side_padding">Pinggiran samping</string>
+    <string name="pref_webtoon_auto_scroll">Gulir otomatis</string>
+    <string name="pref_webtoon_auto_scroll_speed">Kecepatan gulir otomatis</string>
     <string name="pref_skip_filtered_chapters">Lewati bab yang difilter</string>
     <string name="action_unpin">Hilangkan tanda</string>
     <string name="action_pin">Tandai</string>

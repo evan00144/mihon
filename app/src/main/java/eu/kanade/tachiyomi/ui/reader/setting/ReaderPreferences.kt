@@ -93,6 +93,10 @@ class ReaderPreferences(
 
     val webtoonSidePadding: Preference<Int> = preferenceStore.getInt("webtoon_side_padding", WEBTOON_PADDING_MIN)
 
+    val webtoonAutoScroll: Preference<Boolean> = preferenceStore.getBoolean("pref_webtoon_auto_scroll", false)
+
+    val webtoonAutoScrollSpeed: Preference<Int> = preferenceStore.getInt("pref_webtoon_auto_scroll_speed", 3)
+
     val readerHideThreshold: Preference<ReaderHideThreshold> = preferenceStore.getEnum(
         "reader_hide_threshold",
         ReaderHideThreshold.LOW,
@@ -287,6 +291,9 @@ class ReaderPreferences(
     companion object {
         const val WEBTOON_PADDING_MIN = 0
         const val WEBTOON_PADDING_MAX = 25
+
+        const val WEBTOON_AUTO_SCROLL_SPEED_MIN = 1
+        const val WEBTOON_AUTO_SCROLL_SPEED_MAX = 10
 
         const val MILLI_CONVERSION = 100
 

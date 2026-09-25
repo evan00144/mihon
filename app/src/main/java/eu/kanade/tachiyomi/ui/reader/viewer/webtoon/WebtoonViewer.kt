@@ -40,6 +40,8 @@ class WebtoonViewer(val activity: ReaderActivity, val isContinuous: Boolean = tr
      */
     val recycler = WebtoonRecyclerView(activity)
 
+    val autoScroller = WebtoonAutoScroller(scope, recycler, readerPreferences)
+
     /**
      * Frame containing the recycler view.
      */
@@ -192,6 +194,7 @@ class WebtoonViewer(val activity: ReaderActivity, val isContinuous: Boolean = tr
      */
     override fun destroy() {
         super.destroy()
+        autoScroller.destroy()
         scope.cancel()
     }
 
